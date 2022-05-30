@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos2.css">
+    <title>Juego</title>
+
+</head>
+
+<body>
+    <header><h1>Lanzar Dados</h1></header>
+    <section class="calculos">
+        <br><br><br>
+
+
+        <input class="input" type="number" id="n1">
+        Cuantos Juegan: </p>
+        <br><br>
+        <button class="button" id="btn1">Lanzar</button>
+
+
+        <br><br><br>
+        <h2>
+            lanza 2 dados por jugador:</p>
+            <div id="resultado"></div>
+            <div id="ganador"></div>
+
+            <script>
+               
+                var b = document.getElementById('btn1');
+                b.addEventListener('click', dados);
+
+                function dados() {
+                    var nr1 = parseInt(document.getElementById('n1').value);
+                    const jugadores = [];
+                    for (let i = 0; i < nr1; i++) {
+                        jugadores[i] = 2 + Math.floor(Math.random() * 11);
+                    }
+                    document.getElementById("resultado").innerHTML = jugadores
+
+                    var max = 0;
+                    for (let i = 0; i < nr1; i++) {
+                        if (jugadores[i] > max) {
+                            max = jugadores[i];
+                        }
+                    }
+                    var cont = 0;
+
+                    for (let i = 0; i < nr1; i++) {
+                        if (jugadores[i] == max) {
+                            cont++;
+                        }
+                    }
+                    
+                    if (cont == 1) {
+                        document.getElementById("ganador").innerHTML = "gana el jugador con el N°: " + max
+
+                    }
+                    else if (cont > 1) {
+                        document.getElementById("ganador").innerHTML = "Lanzar de nuevo hay un empate"
+
+                    }
+
+                }
+
+
+
+            </script>
+    </section>
+</body>
+
+</html>
